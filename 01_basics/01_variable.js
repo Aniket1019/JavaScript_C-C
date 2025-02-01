@@ -6,7 +6,6 @@ let accountState;
 
 // accountId = 2  // not allowed
 
-
 accountEmial = "hhdd@google.com"
 accountPassword = "4737303"
 accountCity = "BLR"
