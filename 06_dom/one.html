@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plasiobot</title>
+    <style>
+    .bg-black{
+        background-color:#212121;
+        color: #fff;
+    }
+    </style>
+</head>
+<body class="bg-black">
+    <div >
+        <h1 id="title" class="heading">Document Object Model <span style ="display: none;">text text</span></h1>
+        <h2>Lorem ipsum dolor sit.</h2>
+        <h2>Lorem ipsum dolor sit.</h2>
+        <h2>Lorem ipsum dolor sit.</h2>
+        <p>Lorem ipsum dolor sit amet.</p>
+        <input type="password" name="" id="">
+
+        <ul>
+            <li>one</li>
+            <li>two</li>
+            <li>three</li>
+        </ul>
+    </div>
+</body>
+</html>
+
+<!-- document.getElementById('title') ......helps us in finding that element -->
+<!-- document.getElementById('title').setAttribute("class", "test") ...... this will always override the previous attribute  -->
+
+
+<!-- 
+title.style.padding = "15px"
+'15px'
+title.style.borderRadius = "5px"
+'5px'
+title.style.borderRadius = "15px"
+'15px' -->
+
+
+<!-- 
+title.innerText
+'Document Object Model'
+title.textContent
+'Document Object Model text text'...... innerText- shows/displays the text that is actually visible while textContent-shows all the content all the content inside that may be hidden due to CSS styling properties--> 
+
+
+<!-- 
+document.querySelector("h2")
+<h2>​Lorem ipsum dolor sit.​</h2>​
+document.querySelector("#title")
+<h1 id=​"title" class=​"heading">​…​</h1>​
+document.querySelector(".heading")
+<h1 id=​"title" class=​"heading">​…​</h1>​ -->
+
+
+<!-- 
+document.querySelector('input[type="password"]') ..... to accesss input password block
+<input type=​"password" name id>​ -->
+
+
+<!-- 
+document.querySelector('p:first-child')
+null
+
+document.querySelector('ul')
+<ul>​<li>​…​</li>​<li>​…​</li>​<li>​…​</li>​</ul>​ .....since no id and class we can directly type the query that we want to find in this case "ul"-->
+
+
+<!-- 
+document.querySelector('ul')
+<ul>​…​</ul>​
+
+const myul = document.querySelector('ul')
+undefined
+
+myul
+<ul>​…​</ul>​
+
+myul.querySelector('li')
+<li>​::marker​"one"</li>​ .....here the query selector will display only the first list out of the three
+
+myul.querySelector('li')
+<li>​…​</li>​
+
+const turngreen = myul.querySelector('li')
+undefined
+
+turngreen.style.backgroundColor = "Green"
+'Green'
+
+turngreen.style.padding = "10px"
+'10px' 
+
+turngreen.innerText
+'one'
+
+turngreen.innerText = "Five"
+'Five'-->
+
+
+<!-- 
+const tempLiList = document.querySelectorAll('li')
+undefined
+
+tempLiList
+NodeList(3) [li, li, li]
+
+tempLiList.style.color = 'green' 
+VM290:1 Uncaught TypeError: Cannot set properties of undefined (setting 'color')
+    at <anonymous>:1:24
+(anonymous) @ VM290:1Understand this errorAI    ....because since we have used querySelectorAll all the items are selected hence carrying out the action is not possible
+
+tempLiList[0].style.color = 'green'
+'green' ........but can be done to single items-->
+
+
