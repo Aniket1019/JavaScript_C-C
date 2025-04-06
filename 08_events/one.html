@@ -1,0 +1,171 @@
+
+<!--in javaScript each and evry/all the events run sequentially....events are invoked over activities like - click, hover, keyboard press etc
+
+1.
+lets say you add onlick in  the html tag it is a bad practice - it is not a feasable approach because when the application scales it causes problems and hence should be avoided 
+
+2.
+<script>
+    document.getElementById('owl').onclick = function() {
+        alert("Owl clicked")
+    }
+</script> 
+not an issue but because when you are appying onclick event on id ....the event can have problems and not provide propagation ability
+-->
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Events</title>
+</head>
+<body style="background-color: #414141; color: aliceblue;">
+    <h2>Amazing image</h2>
+    <div >
+        <ul id="images">
+            <li><img width="200px" id="photoshop" src="https://images.pexels.com/photos/3561339/pexels-photo-3561339.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="photoshop"></li>
+            <li><img width="200px" id="japan" src="https://images.pexels.com/photos/3532553/pexels-photo-3532553.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><img width="200px" id="river" src="https://images.pexels.com/photos/3532551/pexels-photo-3532551.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><img width="200px" id="owl" src="https://images.pexels.com/photos/3532552/pexels-photo-3532552.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="" ></li>
+            <li><img width="200px" id="prayer" src="https://images.pexels.com/photos/2522671/pexels-photo-2522671.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><a style="color: aliceblue;" href="https://google.com" id="google">Google</a></li>
+        </ul>
+   </div>
+</body>
+<script>
+    // document.getElementById('owl').onclick = function() {
+    //     alert("Owl clicked")
+    // }
+
+    // // attachEvent()
+    // jQuery - on
+
+
+
+///////////type - The type read-only property of the Event interface returns a string containing the event's type. It is set when the event is constructed and is the name commonly used to refer to the specific event, such as click, load, or error.
+// function getEventType(event) {
+//   const log = document.getElementById("log");
+//   log.innerText = `${event.type}\n${log.innerText}`;
+// }
+
+// // Keyboard events
+// document.addEventListener("keydown", getEventType, false); // first
+// document.addEventListener("keypress", getEventType, false); // second
+// document.addEventListener("keyup", getEventType, false); // third
+
+// // Mouse events
+// document.addEventListener("mousedown", getEventType, false); // first
+// document.addEventListener("mouseup", getEventType, false); // second
+// document.addEventListener("click", getEventType, false); // third
+
+
+
+///////////timestamp - The timeStamp read-only property of the Event interface returns the time (in milliseconds) at which the event was created.
+// function getTime(event) {
+//   const time = document.getElementById("time");
+//   time.firstChild.nodeValue = event.timeStamp;
+// }
+// document.body.addEventListener("keypress", getTime);
+
+//Focus this iframe and press any key to get the current timestamp for the keypress event.
+// timeStamp: 18687.600000023842
+
+
+
+//////////defaultprevented - The defaultPrevented read-only property of the Event interface returns a boolean value indicating whether or not the call to Event.preventDefault() canceled the event.
+
+
+
+//////////target - The read-only target property of the Event interface is a reference to the object onto which the event was dispatched. It is different from Event.currentTarget when the event handler is called during the bubbling or capturing phase of the event.
+// Make a list
+// const ul = document.createElement("ul");
+// document.body.appendChild(ul);
+
+// const li1 = document.createElement("li");
+// const li2 = document.createElement("li");
+// ul.appendChild(li1);
+// ul.appendChild(li2);
+
+// function hide(evt) {
+//   // evt.target refers to the clicked <li> element
+//   // This is different from evt.currentTarget, which would refer to the parent <ul> in this context
+//   evt.target.style.visibility = "hidden";
+// }
+
+// // Attach the listener to the list
+// // It will fire when each <li> is clicked
+// ul.addEventListener("click", hide, false);
+
+
+
+////////////toElement -This property can be used for the onmouseenter, onmouseleave, onmouseout and onmouseover events.
+// The pair of the toElement property is the fromElement property. For example, in case of onmouseover and onmouseout events, the fromElement property retrieves the element that the mouse pointer left and the toElement property retrieves the element that the mouse pointer entered.
+
+
+
+//////////currentTarget - imagine currentTarget as your designated project lead who oversees the operation, while target is the employee who actually initiates the action. Outside of the meeting (event handler), the project lead’s role (currentTarget) is no longer in session.
+// const output = document.querySelector("#output");
+// const parent = document.querySelector("#parent");
+// parent.addEventListener("click", (event) => {
+//   const currentTarget = event.currentTarget.getAttribute("id");   //Retrieves the identifier of the element where the listener is bound (i.e., "parent").
+//   const target = event.target.getAttribute("id");   //Captures the identifier of the actual element that initiated the event, which could be any child element within the parent.
+//   output.textContent = `Current target: ${currentTarget}\n`;
+//   output.textContent += `Target: ${target}`;   //The output element’s text content is updated to display both the current target and the original target, thereby providing clarity on the source of the event versus the listener’s attachment point.   
+// });
+
+// const reset = document.querySelector("#reset");
+// reset.addEventListener("click", () => document.location.reload());  //A separate event listener on the "reset" element listens for a click event. Upon activation, it triggers a page reload, effectively resetting the state of the application.
+
+
+
+////////////////clientX, clientY, screenX, screenY
+// clientX and clientY give the mouse position relative to the viewport (visible area of the page).
+// screenX and screenY give the mouse position relative to the entire screen (monitor/display).
+
+
+
+////////////////altKey, ctrlKey, shiftKey, keyCode
+// altKey, ctrlKey, and shiftKey return true if the Alt, Ctrl, or Shift key was pressed during the event.
+// keyCode gives the numeric code of the key pressed (now deprecated—use event.key or event.code instead).
+
+
+
+    // document.getElementById('images').addEventListener('click', function(e){
+    //     console.log("clicked inside the ul");
+    // },false)
+
+    // //when false  - propagation bubling occurs - bottom to top - ex) img>li>ul.....where ul is top and img is bottom
+    // //when true - propagation capturing occurs - top to bottom - ex) ul>li>img.....where ul is top and img is bottom
+
+    // document.getElementById('owl').addEventListener('click', function(e){
+    //     console.log("owl clicked again");
+    //     e.stopPropagation()  //after using this method our event dosent bubble up to the upper element
+    // },false)
+
+    // document.getElementById('google').addEventListener('click', function(e){
+    //    e.preventDefault();    //the deafault action is to open google.com but this wil prevent that
+    //    e.stopPropagation();   //this will stop bubbling
+    //    console.log("google clicked");  
+    // },false)
+
+
+
+    document.querySelector('#images').addEventListener('click', function(event){
+        // console.log(event.target.parentNode); //parentNode selected because we dont want to to just remove the image but the whole element which in this case is an list(li)..... so that when we delete the image even the bullet points of the list are removed  
+        console.log(event.target.tagName); 
+        if(event.target.tagName === 'IMG'){
+            console.log(event.target.id);
+            let removeIt = event.target.parentNode
+            removeIt.remove()
+        }
+
+        
+    })
+
+    // removeIt.parentNode.removeChild(removeIt) //confusing at first but readthrough it again  
+</script>
+</html>
