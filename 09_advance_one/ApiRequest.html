@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    body {
+        background-color: #212121;
+        color: #fff;
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+    }
+    .card {
+        background-color: #333;
+        border-radius: 8px;
+        padding: 20px;
+        text-align: center;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        width: 300px;
+    }
+    .card img {
+        border-radius: 50%;
+        width: 100px;
+        height: 100px;
+        margin-bottom: 15px;
+    }
+    .card h2 {
+            margin: 10px 0;
+        }
+        .card p {
+            font-size: 14px;
+            color: #bbb;
+        }
+</style>
+</head>
+<body style="background-color: #212121;"><!-- 
+    0	UNSENT	Client has been created. open() not called yet.
+1	OPENED	open() has been called.
+2	HEADERS_RECEIVED	send() has been called, and headers and status are available.
+3	LOADING	Downloading; responseText holds partial data.
+4	DONE	The operation is complete.> -->
+</body>
+<script>
+    const requestUrl = 'https://api.github.com/users/Aniket1019'
+    const xhr = new XMLHttpRequest();
+    xhr.open('GET', requestUrl)  //this is basically sending request
+    xhr.onreadystatechange = function(){
+        console.log(xhr.readyState);
+        if (xhr.readyState === 4) {
+            const data = JSON.parse(this.responseText)  //contains all api data in the form of srings that we parse into an object
+            
+            //Create card container
+            const card =  document.createElement('div')
+            card.className = 'card'
+
+            //create an image and append it
+            const img = document.createElement('img')
+            img.src = data.avatar_url;
+            img.alt = 'User Image'
+            card.appendChild(img);
+            
+            //create a name and append it
+            const name = document.createElement('h2')
+            name.textContent = data.login || 'No name available';
+            card.appendChild(name);
+
+            //create a bio and append it
+            const bio = document.createElement('p')
+            bio.textContent = data.id || 'No bio available';
+            card.appendChild(bio);
+
+            //append the card in the body
+            document.body.appendChild(card)
+
+            // console.log(typeof data);
+            console.log(data.public_repos );
+        }
+    }
+    xhr.send();   // after using this method open is called 
+</script>
+</html>
